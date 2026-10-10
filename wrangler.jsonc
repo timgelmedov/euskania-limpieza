@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "euskania-limpieza",
+  "compatibility_date": "2026-10-06",
+  // Static site only: Vite builds into dist/, which Workers serves as assets.
+  "assets": {
+    "directory": "./dist"
+  }
+}

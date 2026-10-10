@@ -1,0 +1,7 @@
+# Film frames, plates and real media never change in place: cache them hard.
+/frames/*
+  Cache-Control: public, max-age=31536000, immutable
+/plates/*
+  Cache-Control: public, max-age=31536000, immutable
+/real/*
+  Cache-Control: public, max-age=604800
