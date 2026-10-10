@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Euskania — Limpieza robotizada de plantas solares</title>
+  <meta name="description" content="Cada fotón cuenta. Limpieza robotizada de plantas solares comerciales en Euskadi." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" href="/brand/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Martian+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body>
+  <div class="loadbar" aria-hidden="true"><i></i></div>
+  <header class="nav">
+    <a class="logo" href="#top" aria-label="Euskania"><img src="/brand/logo.svg" alt="Euskania" width="149" height="34" /></a>
+    <nav class="nav-links" aria-label="Capítulos">
+      <a href="#salida" data-i18n="nav.journey">El viaje</a>
+      <a href="#choque" data-i18n="nav.soiling">Suciedad</a>
+      <a href="#limpieza" data-i18n="nav.cleaning">Limpieza</a>
+      <a href="#real" data-i18n="nav.real">En cubierta</a>
+      <a href="#proyectos" data-i18n="nav.projects">Proyectos</a>
+    </nav>
+    <div class="nav-right">
+      <a class="nav-cta" href="#auditoria" data-i18n="nav.cta">Valoración</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO: slow-motion close-up, camera glides along the glass as it is cleaned -->
+    <section class="chapter" id="hero" data-film="hero" style="--len: 340vh">
+      <div class="stage">
+        <canvas class="film" aria-label="Primer plano de un panel solar negro limpiándose a cámara lenta"></canvas>
+        <div class="hero-title">
+          <p class="eyebrow" data-i18n="hero.eyebrow">Euskania · Limpieza fotovoltaica robotizada</p>
+          <h1><span class="green" data-i18n="hero.title">Cada fotón cuenta.</span></h1>
+          <p class="tagline" data-i18n-html="hero.tagline">Sal, gaviotas y musgo se quedan con parte de la luz. <em>Nosotros la devolvemos.</em></p>
+        </div>
+        <div class="scroll-cue"><span data-i18n="hero.scroll">Desliza</span><i></i></div>
+      </div>
+    </section>
+
+    <!-- 1 SALIDA -->
+    <section class="chapter" id="salida" data-film="salida" style="--len: 420vh">
+      <div class="stage">
+        <canvas class="film" aria-label="Un rayo de luz sale del Sol"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">01 · <span data-i18n="salida.eyebrow">Salida</span></p>
+          <h2 data-i18n-html="salida.title">Un fotón sale del Sol.<br /><em>Viaja para llegar a tu tejado.</em></h2>
+        </div>
+        <dl class="readout-row mono">
+          <div><dt class="label" data-i18n="salida.time">Tiempo de viaje</dt><dd id="slTime">0 min 00 s</dd></div>
+          <div><dt class="label" data-i18n="salida.dist">Distancia</dt><dd><span id="slDist">0,0</span> M km</dd></div>
+          <div><dt class="label" data-i18n="salida.speed">Velocidad</dt><dd>299 792 km/s</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2 DESCENSO -->
+    <section class="chapter" id="descenso" data-film="descenso" style="--len: 420vh">
+      <div class="stage">
+        <canvas class="film" aria-label="Descenso desde la órbita hasta un tejado solar en la costa vasca"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">02 · <span data-i18n="descenso.eyebrow">Descenso</span></p>
+          <h2 data-i18n-html="descenso.title">149,6 millones de km.<br /><em>Los últimos milímetros son los difíciles.</em></h2>
+        </div>
+        <div class="coords mono">
+          <span class="label" data-i18n="descenso.target">Destino</span>
+          <b id="dcLat">0.0000° N</b><b id="dcLng">0.0000° W</b>
+          <span class="label" data-i18n="descenso.alt">Altitud</span>
+          <b id="dcAlt">400 km</b>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 CHOQUE -->
+    <section class="chapter" id="choque" data-film="choque" style="--len: 440vh">
+      <div class="stage">
+        <canvas class="film" aria-label="Un fotón se dispersa al chocar con un cristal de sal"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">03 · <span data-i18n="choque.eyebrow">Choque</span></p>
+          <h2 data-i18n-html="choque.title">Y entonces,<br /><em>un grano de sal.</em></h2>
+        </div>
+        <ul class="soil-list" id="soilList">
+          <li data-at="0.18"><span class="mono label" data-i18n="choque.salt.k">Sal marina</span><p data-i18n="choque.salt.v">La brisa del Cantábrico deja una película que dispersa la luz.</p></li>
+          <li data-at="0.34"><span class="mono label" data-i18n="choque.gull.k">Gaviotas</span><p data-i18n="choque.gull.v">Una mancha tapa celdas enteras y crea puntos calientes.</p></li>
+          <li data-at="0.5"><span class="mono label" data-i18n="choque.moss.k">Musgo y algas</span><p data-i18n="choque.moss.v">La humedad atlántica los hace crecer desde el marco.</p></li>
+          <li data-at="0.66"><span class="mono label" data-i18n="choque.soot.k">Hollín y polen</span><p data-i18n="choque.soot.v">Industria, tráfico y primavera, capa a capa.</p></li>
+        </ul>
+        <div class="scatter">
+          <span class="mono label" data-i18n="choque.scatter">Fotones dispersados</span>
+          <span class="num mono" id="chScatter">0</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 LIMPIEZA -->
+    <section class="chapter" id="limpieza" data-film="limpieza" style="--len: 460vh">
+      <div class="stage">
+        <canvas class="film" aria-label="Robot SolarCleano M1 limpiando una fila de paneles dirigido por un operario"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">04 · <span data-i18n="limpieza.eyebrow">Limpieza</span></p>
+          <h2 data-i18n-html="limpieza.title">El robot limpia.<br /><em>El operario lo dirige.</em></h2>
+        </div>
+        <article class="glass" data-at="0.22" data-side="right"><span class="mono label" data-i18n="limpieza.c1.k">Método</span><p class="glass-big" data-i18n="limpieza.c1.t">En seco o con agua</p><p data-i18n="limpieza.c1.v">Según el tipo de suciedad y la instalación.</p></article>
+        <article class="glass" data-at="0.44" data-side="left"><span class="mono label" data-i18n="limpieza.c2.k">Cepillos</span><p class="glass-big" data-i18n="limpieza.c2.t">Específicos</p><p data-i18n="limpieza.c2.v">Diseñados para trabajar sobre la superficie de los módulos.</p></article>
+        <article class="glass" data-at="0.66" data-side="right"><span class="mono label" data-i18n="limpieza.c3.k">Control remoto</span><p class="glass-big" data-i18n="limpieza.c3.t">SolarCleano M1</p><p data-i18n="limpieza.c3.v">El operario dirige y supervisa el equipo durante todo el servicio.</p></article>
+        <div class="row-meter">
+          <span class="mono label" data-i18n="limpieza.row">Fila limpia</span>
+          <div class="row-bar"><i id="lpBar"></i></div>
+          <span class="num mono" id="lpPct">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 ENTRADA -->
+    <section class="chapter" id="entrada" data-film="entrada" style="--len: 440vh">
+      <div class="stage">
+        <canvas class="film" aria-label="La luz atraviesa el vidrio limpio y el panel se separa en capas"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">05 · <span data-i18n="entrada.eyebrow">Entrada</span></p>
+          <h2 data-i18n-html="entrada.title">Vidrio limpio.<br /><em>La luz llega al silicio.</em></h2>
+        </div>
+        <ul class="layers" id="layerList">
+          <li><span class="mono label">01</span><b data-i18n="entrada.l1">Vidrio templado + antirreflejo</b></li>
+          <li><span class="mono label">02</span><b data-i18n="entrada.l2">Encapsulante EVA</b></li>
+          <li><span class="mono label">03</span><b data-i18n="entrada.l3">Células de silicio</b></li>
+          <li><span class="mono label">04</span><b data-i18n="entrada.l4">Encapsulante EVA</b></li>
+          <li><span class="mono label">05</span><b data-i18n="entrada.l5">Lámina posterior</b></li>
+          <li><span class="mono label">06</span><b data-i18n="entrada.l6">Marco y caja de conexiones</b></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6 FLUJO -->
+    <section class="chapter" id="flujo" data-film="flujo" style="--len: 420vh">
+      <div class="stage">
+        <canvas class="film" aria-label="El edificio pasa del día al anochecer con las luces encendidas"></canvas>
+        <div class="chapter-head">
+          <p class="eyebrow">06 · <span data-i18n="flujo.eyebrow">Flujo</span></p>
+          <h2 data-i18n-html="flujo.title">Y el fotón<br /><em>enciende la tienda.</em></h2>
+        </div>
+        <div class="clock">
+          <span class="mono label" data-i18n="flujo.clock">Hora</span>
+          <span class="num mono" id="flClock">12:00</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- REAL WORK: photos and video from the client -->
+    <section class="section" id="real">
+      <div class="section-head">
+        <p class="eyebrow">07 · <span data-i18n="real.eyebrow">En cubierta</span></p>
+        <h2 data-i18n-html="real.title">Robot + operario<br /><em>+ planificación.</em></h2>
+        <p class="lede" data-i18n="real.lede">Fotos y vídeo reales de nuestro equipo trabajando con el SolarCleano M1.</p>
+      </div>
+      <div class="real-grid">
+        <figure class="real-video"><video src="/real/m1.mp4" poster="/real/m1-poster.webp" muted loop playsinline autoplay preload="metadata" aria-label="Vídeo real: SolarCleano M1 limpiando una cubierta solar"></video></figure>
+        <figure><img src="/real/r1.webp" alt="Operario con el mando del robot sobre una cubierta solar" loading="lazy" /></figure>
+        <figure><img src="/real/r2.webp" alt="SolarCleano M1 sobre los módulos" loading="lazy" /></figure>
+        <figure><img src="/real/r3.webp" alt="Detalle del SolarCleano M1 y su cepillo" loading="lazy" /></figure>
+        <figure><img src="/real/r4.webp" alt="Robot limpiando una fila de paneles" loading="lazy" /></figure>
+        <figure><img src="/real/r5.webp" alt="Operario con arnés dirigiendo la limpieza" loading="lazy" /></figure>
+      </div>
+      <div class="kinds">
+        <p class="mono label" data-i18n="real.kinds">¿Para qué instalaciones?</p>
+        <ul>
+          <li data-i18n="real.k1">Empresas industriales</li><li data-i18n="real.k2">Autoconsumo</li><li data-i18n="real.k3">Marquesinas</li><li data-i18n="real.k4">Cubiertas solares</li>
+          <li data-i18n="real.k5">Centros educativos</li><li data-i18n="real.k6">Instalaciones comerciales</li><li data-i18n="real.k7">Comunidades y edificios</li><li data-i18n="real.k8">Otras instalaciones</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- VISION: dirty / clean lens -->
+    <section class="section" id="vision">
+      <div class="section-head">
+        <p class="eyebrow">08 · <span data-i18n="vision.eyebrow">Revisión visual</span></p>
+        <h2 data-i18n-html="vision.title">Mira lo que <em>no se ve.</em></h2>
+        <p class="lede" data-i18n="vision.lede">Pasa la lente sobre la cubierta: debajo aparece la misma instalación limpia. La lectura compara el píxel sucio con el limpio.</p>
+      </div>
+      <div class="vision-wrap">
+        <div class="vision-stage" id="visionStage">
+          <img src="/plates/D.webp" alt="" draggable="false" />
+          <div class="lens" id="lens"><div class="lens-img" id="lensImg"></div><i class="lens-cross"></i></div>
+        </div>
+        <aside class="readout" aria-live="polite">
+          <div class="readout-head"><span class="mono label" data-i18n="vision.readout">Lectura</span><span class="mono" id="rdMode">CLEAN</span></div>
+          <div class="readout-main"><span class="num" id="rdValue">—</span><span class="mono unit" id="rdUnit">%</span></div>
+          <p class="readout-class" id="rdClass">—</p>
+          <dl class="mono readout-grid">
+            <div><dt>X</dt><dd id="rdX">—</dd></div>
+            <div><dt>Y</dt><dd id="rdY">—</dd></div>
+            <div><dt data-i18n="vision.dirty">Sucio</dt><dd><i id="rdSwA"></i><span id="rdHexA">—</span></dd></div>
+            <div><dt id="rdBLabel" data-i18n="vision.clean">Limpio</dt><dd><i id="rdSwB"></i><span id="rdHexB">—</span></dd></div>
+          </dl>
+          <div class="scale" id="rdScale"><i id="rdMark"></i></div>
+          <div class="scale-labels mono"><span id="rdLo">0%</span><span id="rdHi">100%</span></div>
+          <p class="fine" data-i18n="vision.note">Imagen ilustrativa. Lectura calculada a partir de los píxeles de la imagen, no de una medición real.</p>
+        </aside>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="proyectos">
+      <div class="section-head">
+        <p class="eyebrow">09 · <span data-i18n="cases.eyebrow">Proyectos Euskania</span></p>
+        <h2 data-i18n-html="cases.title">Plantas reales.<br /><em>Números reales.</em></h2>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <h3>Artea</h3><p class="case-place mono">Leioa · Bizkaia</p>
+          <dl class="mono">
+            <div><dt data-i18n="cases.peak">Potencia pico</dt><dd>85,44 kWp</dd></div>
+            <div><dt data-i18n="cases.modules">Módulos</dt><dd>267</dd></div>
+            <div><dt data-i18n="cases.annual">Producción anual</dt><dd>82,4 MWh</dd></div>
+            <div><dt data-i18n="cases.pr">Performance ratio</dt><dd>83,7 %</dd></div>
+            <div><dt data-i18n="cases.soiling">Pérdida por suciedad</dt><dd>2,0 %</dd></div>
+          </dl>
+        </article>
+        <article class="case">
+          <h3>Eroski Gorliz</h3><p class="case-place mono">Gorliz · Bizkaia</p>
+          <dl class="mono">
+            <div><dt data-i18n="cases.peak">Potencia pico</dt><dd>104,00 kWp</dd></div>
+            <div><dt data-i18n="cases.modules">Módulos</dt><dd>325</dd></div>
+            <div><dt data-i18n="cases.annual">Producción anual</dt><dd>103,2 MWh</dd></div>
+            <div><dt data-i18n="cases.yield">Rendimiento específico</dt><dd>992,3 kWh/kWp</dd></div>
+          </dl>
+        </article>
+        <article class="case">
+          <h3>Camping Sopelana</h3><p class="case-place mono">Sopelana · Bizkaia</p>
+          <dl class="mono">
+            <div><dt data-i18n="cases.peak">Potencia pico</dt><dd>22,12 kWp</dd></div>
+            <div><dt data-i18n="cases.modules">Módulos</dt><dd>79</dd></div>
+            <div><dt data-i18n="cases.annual">Producción anual</dt><dd>22,2 MWh</dd></div>
+            <div><dt data-i18n="cases.pr">Performance ratio</dt><dd>81,5 %</dd></div>
+            <div><dt data-i18n="cases.soiling">Pérdida por suciedad</dt><dd>2,0 %</dd></div>
+          </dl>
+        </article>
+      </div>
+      <p class="fine center" data-i18n="cases.note">Datos de diseño: simulación anual de producción (HelioScope, Meteonorm 8). La pérdida por suciedad es la supuesta en el modelo.</p>
+    </section>
+
+    <!-- AUDIT CTA -->
+    <section class="section" id="auditoria">
+      <div class="audit-card">
+        <div class="audit-left">
+          <p class="eyebrow">10 · <span data-i18n="audit.eyebrow">Valoración</span></p>
+          <h2 data-i18n-html="audit.title">Pide tu<br /><em>valoración.</em></h2>
+          <p class="lede" data-i18n="audit.lede">Cuéntanos dónde está y qué superficie necesitas limpiar. Te preparamos una valoración adaptada a tu instalación.</p>
+          <ol class="steps">
+            <li><span class="mono">01</span><span><b data-i18n="audit.s1">Valoramos</b> <span data-i18n="audit.s1v">Accesos, cubierta, pendiente y características de la instalación.</span></span></li>
+            <li><span class="mono">02</span><span><b data-i18n="audit.s2">Planificamos</b> <span data-i18n="audit.s2v">Medios, procedimiento y condiciones de trabajo.</span></span></li>
+            <li><span class="mono">03</span><span><b data-i18n="audit.s3">Limpiamos</b> <span data-i18n="audit.s3v">Limpieza robotizada con SolarCleano M1.</span></span></li>
+            <li><span class="mono">04</span><span><b data-i18n="audit.s4">Revisamos</b> <span data-i18n="audit.s4v">Supervisamos el resultado y comunicamos posibles incidencias visibles.</span></span></li>
+          </ol>
+          <p class="contact mono"><a href="tel:+34624161228">624 161 228</a> · <a href="mailto:euskania.es@gmail.com">euskania.es@gmail.com</a></p>
+        </div>
+        <form class="audit-form" id="auditForm" novalidate>
+          <label><span class="mono label" data-i18n="audit.f.company">Empresa o comunidad</span><input name="company" autocomplete="organization" required /></label>
+          <div class="two">
+            <label><span class="mono label" data-i18n="audit.f.kwp">Superficie (m²) o potencia</span><input name="kwp" /></label>
+            <label><span class="mono label" data-i18n="audit.f.town">Municipio</span><input name="town" autocomplete="address-level2" /></label>
+          </div>
+          <div class="two">
+            <label><span class="mono label" data-i18n="audit.f.email">Email</span><input name="email" type="email" autocomplete="email" required /></label>
+            <label><span class="mono label" data-i18n="audit.f.phone">Teléfono</span><input name="phone" type="tel" autocomplete="tel" required /></label>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" required /><span data-i18n="audit.f.consent">Acepto que Euskania me contacte sobre esta solicitud.</span></label>
+          <button class="submit" type="submit" data-i18n="audit.f.submit">Pedir valoración</button>
+          <p class="form-note" id="formNote" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <img src="/brand/logo.svg" alt="Euskania" width="112" height="26" />
+    <div class="foot-text">
+      <p class="slogan" data-i18n="foot.slogan">Trabajando juntos para iluminar el futuro</p>
+      <p>EUSKANIA ZEHAR S.L. · Leioa (Bizkaia) · <a href="tel:+34624161228">624 161 228</a> · <a href="mailto:euskania.es@gmail.com">euskania.es@gmail.com</a></p>
+      <p data-i18n="foot.note">Prototipo. Las escenas animadas están generadas con IA a modo ilustrativo; la sección «En cubierta» muestra fotos y vídeo reales.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
